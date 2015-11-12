@@ -1,0 +1,1 @@
+docker build --rm -t snarlysodboxer/s3fs:latest .
