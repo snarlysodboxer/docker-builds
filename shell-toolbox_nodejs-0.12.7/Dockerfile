@@ -19,5 +19,7 @@ RUN \
   npm install -g npm && \
   printf '\n# Node.js\nexport PATH="node_modules/.bin:$PATH"' >> /root/.bashrc
 
+RUN /bin/bash -c "apt-get update && apt-get install -qy autoconf bison build-essential libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libncurses5-dev libffi-dev libgdbm3 libgdbm-dev && apt-get clean"
+
 ENTRYPOINT ["/bin/bash"]
 CMD ["-l"]
