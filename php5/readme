@@ -1,0 +1,1 @@
+docker build --rm -t snarlysodboxer/php5:latest .
