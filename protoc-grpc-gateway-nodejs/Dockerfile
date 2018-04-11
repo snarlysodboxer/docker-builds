@@ -1,4 +1,4 @@
-FROM snarlysodboxer/protoc-grpc-gateway:latest
+FROM snarlysodboxer/protoc-grpc-gateway:0.0.1
 
 RUN apk update && apk add --update nodejs
 
