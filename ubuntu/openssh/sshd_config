@@ -4,7 +4,7 @@
 # What ports, IPs and protocols we listen for
 Port 22
 # Use these options to restrict which interfaces/protocols sshd will bind to
-ListenAddress ::
+# ListenAddress ::
 ListenAddress 0.0.0.0
 Protocol 2
 # HostKeys for protocol version 2
@@ -21,7 +21,7 @@ ServerKeyBits 1024
 
 # Logging
 # SyslogFacility AUTH
-LogLevel INFO
+LogLevel FATAL
 
 # Authentication:
 LoginGraceTime 120
