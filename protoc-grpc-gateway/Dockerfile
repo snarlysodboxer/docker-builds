@@ -1,6 +1,24 @@
-FROM electrotumbao/golang-protoc:latest
+FROM golang:1.10.1-stretch
 
-RUN apk update && apk add git
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends wamerican unzip && \
+    mkdir -pv /tmp/bin && \
+    cd /tmp/bin && \
+    wget https://github.com/google/protobuf/releases/download/v3.5.1/protoc-3.5.1-linux-x86_64.zip && \
+    unzip protoc-3.5.1-linux-x86_64.zip && \
+    cp -v ./bin/protoc /usr/bin/ && \
+    cd / && \
+    rm -rfv /tmp/bin && \
+    apt-get clean && \
+    GOPATH=/go && \
+    mkdir -pv $GOPATH && \
+    GOPATH=$GOPATH go get -u github.com/golang/protobuf/protoc-gen-go && \
+    cp -v /go/bin/protoc-gen-go /usr/bin/ && \
+    rm -rfv $GOPATH
+
+
+
+RUN apt-get update && apt-get install -y git-core
 RUN go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway
 RUN go get -u github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger
 RUN go get -u github.com/golang/protobuf/protoc-gen-go
